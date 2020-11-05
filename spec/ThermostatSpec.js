@@ -50,4 +50,20 @@ describe('Thermostat', () => {
     thermostat.powerSaveOn();
     expect(thermostat.maxTemp).toEqual(25);
   });
+
+  it('energy usage is low-usage', () => {
+    thermostat.decreaseTemp(2)
+    expect(thermostat.usage()).toEqual('low-usage');
+  });
+
+  it('energy usage is between 19 and 25 is medium-usage', () => {
+    expect(thermostat.usage()).toEqual('medium-usage');
+  });
+
+  it('energy usage is higher than 25', () => {
+    thermostat.powerSaveOff();
+    thermostat.increaseTemp(10);
+    expect(thermostat.usage()).toEqual('high-usage');
+  });
+
 });

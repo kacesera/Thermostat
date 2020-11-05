@@ -7,12 +7,16 @@ class Thermostat {
     this.powerSave = true;
   };
 
-  increaseTemp() {
-    this.temp++ ;
+  increaseTemp(num = 1) {
+    if((this.temp + num) >= this.maxTemp) {
+      this.temp = this.maxTemp;
+    } else {
+      this.temp += num ;
+    };
   };
 
-  decreaseTemp() {
-    this.temp-- ;
+  decreaseTemp(num = 1) {
+    this.temp -= num ;
   };
 
   powerSaveOff() {
@@ -28,6 +32,18 @@ class Thermostat {
   reset() {
     this.temp = 20;
     this.powerSaveOn();
+  };
+
+  usage() {
+    if(this.temp <= 18) {
+      return 'low-usage'
+    }
+    else if(this.temp >= 19 && this.temp <= 25) {
+      return 'medium-usage'
+    }
+    else {
+      return 'high-usage'
+    }
   };
 
 };
