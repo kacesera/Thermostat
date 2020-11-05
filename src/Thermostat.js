@@ -1,5 +1,19 @@
 class Thermostat {
+
   constructor() {
-    this.temp = '20 degrees';
+    this.temp = 20;
   };
-}
+
+  increaseTemp() {
+
+    this.temp++ ;
+
+  };
+
+  decreaseTemp() {
+
+    this.temp-- ;
+
+  };
+
+};
